@@ -1,0 +1,23 @@
+{% set COMMIT = "master" %}
+{% if GIT_DESCRIBE_NUMBER > '0' %}
+{% set GIT_VERSION = GIT_DESCRIBE_TAG[1:] + '.post' + GIT_DESCRIBE_NUMBER %}
+{% else %}
+{% set GIT_VERSION = GIT_DESCRIBE_TAG[1:] %}
+{% endif %}
+
+package:
+  name: microdrop-3
+  version: {{ GIT_VERSION }}
+
+source:
+  git_rev: {{ COMMIT }}
+  git_url: https://github.com/sci-bots/microdrop-3.git
+
+build:
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  number: 0
+
+requirements:
+  build:
+    - nodejs
