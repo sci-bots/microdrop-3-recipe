@@ -17,8 +17,8 @@ REM Install `electron-packager`
 cmd /C npm install -g electron-packager lerna npm-check-updates yarn
 
 REM Install app dependencies
-cmd /C lerna bootstrap
-cmd /C lerna bootstrap
+cmd /C yarn bootstrap
+cmd /C yarn build
 
 REM Build Electron app executable
 cd microdrop-builder
